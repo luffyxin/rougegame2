@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Law Swarm — Prototype</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="top">
+      <div class="brand">LAW SWARM</div>
+      <div id="hud" class="hud"></div>
+    </header>
+
+    <main>
+      <section id="panel-map" class="panel hidden">
+        <div class="map-card">
+          <h2>选择下一路线</h2>
+          <p class="hint">三选一：决定本波怎么打、备战有什么加成。Boss 波固定清潮。</p>
+          <div id="map-choices" class="map-choices"></div>
+        </div>
+      </section>
+
+      <section id="panel-prep" class="panel">
+        <div class="prep-grid prep-grid-v2">
+          <div class="card-block">
+            <h2>法则板</h2>
+            <p class="hint">商店买法则 → 装进槽。可用「扩容钉」加槽（最多 6）。</p>
+            <div id="law-slots" class="law-slots"></div>
+            <div id="law-pool" class="law-pool"></div>
+          </div>
+
+          <div class="card-block">
+            <h2>阵容棋盘</h2>
+            <p class="hint">8 格环绕阵心。点箭头转向，点「卖」卖掉。近战 ★ 站桩，★★/游猎符走位。</p>
+            <div id="board" class="board board-ring"></div>
+            <h3 class="subhead">羁绊</h3>
+            <div id="bonds" class="bonds"></div>
+          </div>
+
+          <div class="card-block">
+            <h2>商店</h2>
+            <p class="hint">棋子 / 法则 / 永久道具都会刷出。点击购买。</p>
+            <div id="shop" class="shop"></div>
+            <div class="prep-actions">
+              <button id="btn-reroll" type="button">刷新 (2金)</button>
+              <button id="btn-fight" class="primary" type="button">开战</button>
+            </div>
+          </div>
+
+          <div class="card-block span-all">
+            <h2>进化</h2>
+            <p class="hint">满足配方可合成强化棋（消耗材料）。</p>
+            <div id="evolutions" class="evo-row"></div>
+          </div>
+
+          <div class="card-block span-all">
+            <h2>永久道具</h2>
+            <p class="hint">波内升级与结算奖励都会进这里，备战期可查看，效果跨波保留。</p>
+            <div id="items" class="items-row"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="panel-arena" class="panel hidden">
+        <canvas id="arena" width="960" height="540"></canvas>
+        <div class="arena-bar">
+          <span class="arena-hint">绿=经验 · 金=金币 · 紫=永久道具(极稀有) · 红=临时救场(稀有)</span>
+          <div id="speed-btns" class="speed-btns">
+            <button type="button" data-speed="1">1x</button>
+            <button type="button" data-speed="1.6" class="active">1.6x</button>
+            <button type="button" data-speed="2.5">2.5x</button>
+          </div>
+        </div>
+        <div id="levelup-modal" class="modal hidden">
+          <h2>获得永久道具</h2>
+          <div id="levelup-choices" class="levelup-choices"></div>
+        </div>
+      </section>
+
+      <section id="panel-result" class="panel hidden">
+        <div class="result-card">
+          <h2 id="result-title">波次结束</h2>
+          <p id="result-body"></p>
+          <div id="result-choices" class="levelup-choices"></div>
+          <button id="btn-continue" class="primary" type="button">回到备战</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      路线节点 · 进化配方 · 9 波 / 3 幕 · 法则与道具构筑
+    </footer>
+  </div>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
